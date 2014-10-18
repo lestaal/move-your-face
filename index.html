@@ -4,6 +4,13 @@
 	<title>Move Your Face</title>
 	<script type="text/javascript" src="headtrackr.js"></script>
 	<script type="text/javascript" src="face.js"></script>
+	<style>
+		video {
+			-ms-transform: scale(-1, 1); /* IE 9 */
+			-webkit-transform: scale(-1, 1); /* Chrome, Safari, Opera */
+			transform: scale(-1, 1);
+		}
+	</style>
 </head>
 <body onLoad="init();">
 	<canvas id="inputCanvas" width="740" height="580" style="display:none"></canvas>
