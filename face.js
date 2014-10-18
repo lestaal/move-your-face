@@ -3,6 +3,7 @@ var canvasInput;
 var canvasOverlay;
 var overlayContext;
 var faceRectangle;
+var fallingObjects;
 
 var numLives;
 var colors = ["#FA6800", "#FAB700", "#FA3600", "#FA0000"];
@@ -36,7 +37,7 @@ function init() {
 		}
 	});
 	
-	var fallingObjects = [];
+	fallingObjects = [];
 	window.setInterval(moveObjects(), 500);
 	window.setInterval(addObject(), 3000);
 
