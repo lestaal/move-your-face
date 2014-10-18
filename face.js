@@ -36,11 +36,13 @@ function init() {
 			faceRectangle = event;
 		}
 	});
-	
+
+}
+
+function start() {
 	fallingObjects = [];
 	window.setInterval(moveObjects, 500);
 	window.setInterval(addObject, 3000);
-
 }
 
 /* Inclusive on min and max */
@@ -76,6 +78,7 @@ function moveObjects() {
 
 function hit() {
 	numLives--;
+	document.getElementById("lives").innerHTML = numLives;
 	if(numLives <= 0) {
 		fallingObjects = [];
 		//TODO: game over message
