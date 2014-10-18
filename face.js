@@ -77,6 +77,7 @@ function moveObjects() {
 }
 
 function onHit() {
+	console.log("hit");
 	numLives--;
 	document.getElementById("lives").innerHTML = numLives;
 	if(numLives <= 0) {
@@ -113,8 +114,8 @@ function Circle(x, y, radius, velocity, color) {
 	this.isValid = function() {
 		if(this.x >= (faceRectangle.x - faceRectangle.width/2 - this.radius) &&
 			this.x <= (faceRectangle.x + faceRectangle.width/2 + this.radius) &&
-			this.y <= (faceRectangle.y - faceRectangle.height/2 - this.radius) &&
-			this.y >= (faceRectangle.y + faceRectangle.height/2 + this.radius)) {
+			this.y >= (faceRectangle.y - faceRectangle.height/2 - this.radius) &&
+			this.y <= (faceRectangle.y + faceRectangle.height/2 + this.radius)) {
 				return false;
 			}
 		else {
