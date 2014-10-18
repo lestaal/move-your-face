@@ -5,7 +5,7 @@
 	<script type="text/javascript" src="headtrackr.js"></script>
 	<script type="text/javascript" src="face.js"></script>
 	<style>
-		video {
+		.mirrored {
 			-ms-transform: scale(-1, 1); /* IE 9 */
 			-webkit-transform: scale(-1, 1); /* Chrome, Safari, Opera */
 			transform: scale(-1, 1);
@@ -14,7 +14,7 @@
 </head>
 <body onLoad="init();">
 	<canvas id="inputCanvas" width="740" height="580" style="display:none"></canvas>
-	<video id="inputVideo" autoplay loop width="740" height="580" style="z-index: 0;"></video>
-	<canvas id="overlay" width="740" height="580" style="position: absolute; top: 0px; z-index: 1; display: block;"></canvas>
+	<video id="inputVideo" class="mirrored" autoplay loop width="740" height="580" style="z-index: 0;"></video>
+	<canvas id="overlay" class="mirrored" width="740" height="580" style="position: absolute; top: 0px; z-index: 1; display: block;"></canvas>
 </body>
 </html>
