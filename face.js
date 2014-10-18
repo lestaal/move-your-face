@@ -38,8 +38,8 @@ function init() {
 	});
 	
 	fallingObjects = [];
-	window.setInterval(moveObjects(), 500);
-	window.setInterval(addObject(), 3000);
+	window.setInterval(moveObjects, 500);
+	window.setInterval(addObject, 3000);
 
 }
 
