@@ -49,11 +49,13 @@ function randomInt(min, max) {
 }
 
 function addObject() {
+	console.log("Adding a circle");
 	fallingObjects.push(new Circle(randomInt(0,canvasOverlay.width), 0,
 		randomInt(3, 10), randomInt(1,3), colors[randomInt(0,3)]));
 }
 
 function moveObjects() {
+	console.log("Moving circles");
 	var hit = false;
 	for(var i = 0; i < fallingObjects.length; i++) {
 		if(fallingObjects[i].update()) {
