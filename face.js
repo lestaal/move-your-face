@@ -104,7 +104,7 @@ function Circle(x, y, radius, velocity, color) {
 		overlayContext.fill();
 	}
 	
-	this.isValid = function {
+	this.isValid = function() {
 		if(this.x >= (faceRectangle.x - faceRectangle.width/2 - this.radius) &&
 			this.x <= (faceRectangle.x + faceRectangle.width/2 + this.radius) &&
 			this.y <= (faceRectangle.y - faceRectangle.height/2 - this.radius) &&
