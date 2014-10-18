@@ -14,6 +14,7 @@
 </head>
 <body onLoad="init();">
 	<canvas id="inputCanvas" width="740" height="580" style="display:none"></canvas>
-	<video id="inputVideo" autoplay loop width="740" height="580"></video>
+	<video id="inputVideo" autoplay loop width="740" height="580" style="z-index: 0;"></video>
+	<canvas id="overlay" width="740" height="580" style="position: absolute; top: 0px; z-index: 1; display: block;"></canvas>
 </body>
 </html>
