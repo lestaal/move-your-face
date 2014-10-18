@@ -72,11 +72,11 @@ function moveObjects() {
 		}
 	}
 	if(hit) {
-		hit();
+		onHit();
 	}
 }
 
-function hit() {
+function onHit() {
 	numLives--;
 	document.getElementById("lives").innerHTML = numLives;
 	if(numLives <= 0) {
