@@ -116,6 +116,7 @@ function Circle(x, y, radius, velocity, color) {
 			this.x <= (faceRectangle.x + faceRectangle.width/2 + this.radius) &&
 			this.y >= (faceRectangle.y - faceRectangle.height/2 - this.radius) &&
 			this.y <= (faceRectangle.y + faceRectangle.height/2 + this.radius)) {
+				console.log("circle: "+this.x+", "+this.y+" rectangle: "+faceRectangle.x+", "+faceRectangle.y);
 				return false;
 			}
 		else {
