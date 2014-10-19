@@ -48,7 +48,7 @@ function init() {
 			}
 			monocle.style.display = "block";
 			monocle.style.left = (canvasOverlay.width - event.x - 60)+"px";
-			monocle.style.top = (event.y - 50)+"px";
+			monocle.style.top = (event.y - 40)+"px";
 
 			faceRectangle = event;
 			if (started) {
