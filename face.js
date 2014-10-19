@@ -46,9 +46,11 @@ function init() {
 				mustache.style.left = (canvasOverlay.width - event.x - 50)+"px";
 				mustache.style.top = (event.y + 35)+"px";
 			}
-			monocle.style.display = "block";
-			monocle.style.left = (canvasOverlay.width - event.x - 90)+"px";
-			monocle.style.top = (event.y - 35)+"px";
+			if (numPoints >= 150) {
+				monocle.style.display = "block";
+				monocle.style.left = (canvasOverlay.width - event.x - 90)+"px";
+				monocle.style.top = (event.y - 35)+"px";
+			}
 
 			faceRectangle = event;
 			if (started) {
@@ -66,6 +68,7 @@ function start() {
 	numPoints = 0;
 	document.getElementById("points").innerHTML = numPoints;
 	mustache.style.display = "none";
+	monocle.style.display = "none";
 	// clear game over message
 	document.getElementById("gameOver").style.display = 'none';
 	// initilaize falling objects
