@@ -47,7 +47,7 @@ function init() {
 				mustache.style.top = (event.y + 30)+"px";
 			}
 			monocle.style.display = "block";
-			monocle.style.left = (canvasOverlay.width - event.x - 60)+"px";
+			monocle.style.left = (canvasOverlay.width - event.x - 80)+"px";
 			monocle.style.top = (event.y - 40)+"px";
 
 			faceRectangle = event;
