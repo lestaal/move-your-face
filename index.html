@@ -31,6 +31,11 @@
 			width : 100px;
 			height: auto;
 		}
+		#instructions {
+			position : absolute;
+			left : 800px;
+			top : 50px;
+		}
 	</style>
 </head>
 <body onLoad="init();">
@@ -45,5 +50,18 @@
 	<img id="mustache" style="display: none;" src="mustache.png"></img>
 	<img id="monocle" style="display: none;" src="monocle.png"></img>
 	<div id="gameOver" style="display: none;">Game Over</div>
+	
+	<div id="instructions">
+		<h1>How to Play Move Your Face</h1>
+		<ul> 
+			<li>Wait for the green rectangle to settle on your face before pressing Start</li>
+			<li>Move your face to direct the green rectangle</li>
+			<li>Aim for blue and teal balls to score points</li>
+			<li>Avoid red and orange balls</li>
+			<li>Hit 3 red or orange balls and you lose</li>
+			<li>Level up by earning points</li>
+			<li>Earn a prize with every level!</li>
+		</ul>
+	</div>
 </body>
 </html>
