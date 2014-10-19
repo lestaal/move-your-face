@@ -24,15 +24,21 @@
 		}
 		#mustache {
 			position : absolute;
-			z-index : 8;
+			z-index : 6;
 			width : 130px;
 			height: auto;
 		}
 		#monocle {
 			position : absolute;
-			z-index : 9;
+			z-index : 7;
 			width : 100px;
 			height: auto;
+		}
+		#bowtie {
+			position : absolute;
+			z-index : 8;
+			width : 130px;
+			height : auto;
 		}
 		#instructions {
 			position : absolute;
@@ -71,11 +77,12 @@
 	<br/>
 	<canvas id="inputCanvas" width="740" height="555" style="display:none"></canvas>
 	<video id="inputVideo" class="mirrored" autoplay loop width="740" height="555" style="z-index: 0;"></video>
-	<canvas id="overlay" class="mirrored" width="740" height="555" style="position: absolute; z-index: 1; display: block;"></canvas>
+	<canvas id="overlay" class="mirrored" width="740" height="555" style="position: absolute; z-index: 9; display: block;"></canvas>
 	<br/><button id="start"; onClick="start();" disabled>Start!</button>
 
 	<img id="mustache" style="display: none;" src="mustache.png"></img>
 	<img id="monocle" style="display: none;" src="monocle.png"></img>
+	<img id="bowtie" style="display: none;" src="bowtie.png"></img>
 	<div id="gameOver" style="display: none;">Game Over</div>
 	
 	<div id="instructions">
