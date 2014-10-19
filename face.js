@@ -11,10 +11,15 @@ var numPoints;
 var started;
 var badColors = ["#FA6800", "#FAB700", "#FA3600", "#FA0000"];
 var goodColors = ["#18FFFF", "#039BE5", "#1DE9B6", "#00E5FF"];
+
 var mustache;
+var monocle;
+var bowtie;
 
 var level2 = 100;	//mustache
 var level3 = 200;	//monocle
+var level4 = 300;	//bow tie
+var level5 = 400;	//top hat
 
 var minVelocity;
 var maxVelocity;
@@ -26,6 +31,7 @@ function init() {
 	overlayContext = canvasOverlay.getContext('2d');
 	mustache = document.getElementById('mustache');
 	monocle = document.getElementById('monocle');
+	bowtie = document.getElementById('bowtie');
 	
 	if(localStorage.getItem("highScore") == undefined) {
 		localStorage.setItem("highScore", 0);
@@ -65,6 +71,11 @@ function init() {
 				monocle.style.left = (canvasOverlay.width - event.x - 90)+"px";
 				monocle.style.top = (event.y - 35)+"px";
 			}
+			//if (numPoints >= level4) {
+			bowtie.style.display = "block";
+			bowtie.style.left = (canvasOverlay.width - event.x - 50) + "px";
+			bowtie.style.top = (event.y + 100) + "px";
+			//}
 
 			faceRectangle = event;
 			if (started) {
@@ -130,17 +141,27 @@ function moveObjects() {
 }
 
 function incrementPoints(num) {
-	if (numPoints < level3 && numPoints + num >= level3) {
+	if (numPoints < level2 && numPoints + num >= level2) {
+		window.clearInterval(badInterval);
+		badInterval = window.setInterval(addBad, 7000);
+		addBad();
+		maxVelocity+=2;
+	}
+	else if (numPoints < level3 && numPoints + num >= level3) {
 		window.clearInterval(badInterval);
 		badInterval = window.setInterval(addBad, 5000);
 		addBad();
 		maxVelocity+=2;
 	}
-	else if (numPoints < level2 && numPoints + num >= level2) {
+	else if (numPoint < level4 && numPoints + num >= level4) {
 		window.clearInterval(badInterval);
-		badInterval = window.setInterval(addBad, 7000);
-		addBad();
-		maxVelocity+=2;
+		badInterval = window.setInterval(addBad, 4000);
+		maxVelocity++;
+	}
+	else if (numPoint < level5 && numPoints + num >= level5) {
+		window.clearInterval(badInterval);
+		badInterval = window.setInterval(addBad, 3000);
+		maxVelocity++;
 	}
 	numPoints += num;
 	document.getElementById("points").innerHTML = numPoints;
