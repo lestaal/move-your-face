@@ -41,12 +41,11 @@ function init() {
 }
 
 function start() {
-	// clear canvas
-	overlayContext.clearRect(0,0,740,580);
+	// clear game over message
+	document.getElementById("gameOver").style.display = 'none';
 	// initilaize falling objects
 	fallingObjects = [];
 	addObject();
-	//window.setInterval(moveObjects, 500);
 	interval = window.setInterval(addObject, 5000);
 }
 
@@ -93,9 +92,9 @@ function onHit() {
 function gameOver() {
 	fallingObjects = [];
 	window.clearInterval(interval);
-	overlayContext.font="30px Gerogia";
-	overlayContext.fillStyle = "#FA0000"
-	overlayContext.fillText("Game Over", canvasOverlay.width/2 - 100, canvasOverlay.height/2 - 10);
+	numLives = 3;
+	document.getElementById("lives").innerHTML = numLives;
+	document.getElementById("gameOver").style.display = 'block';
 }
 
 function Circle(x, y, radius, velocity, color) {

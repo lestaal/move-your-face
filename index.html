@@ -10,6 +10,16 @@
 			-webkit-transform: scale(-1, 1); /* Chrome, Safari, Opera */
 			transform: scale(-1, 1);
 		}
+		#gameOver {
+			left = "20%";
+			right = "20%";
+			top = "30%";
+			fontSize = "90px";
+			color = "#FA0000";
+			position = "absolute";
+			fontFamily = "Helvetica, Arial, sans-serif";
+			zIndex = '10';
+		}
 	</style>
 </head>
 <body onLoad="init();">
@@ -18,5 +28,7 @@
 	<video id="inputVideo" class="mirrored" autoplay loop width="740" height="580" style="z-index: 0;"></video>
 	<canvas id="overlay" class="mirrored" width="740" height="580" style="position: absolute; top: 0px; z-index: 1; display: block;"></canvas>
 	<br/><button onClick="start();">Start!</button>
+
+	<div id="gameOver" style="display: none;">Game Over</div>
 </body>
 </html>
