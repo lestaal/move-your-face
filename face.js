@@ -65,7 +65,7 @@ function randomInt(min, max) {
 function addObject() {
 	console.log("Adding a circle");
 	fallingObjects.push(new Circle(randomInt(0,canvasOverlay.width), 0,
-		randomInt(3, 10), randomInt(1,3), colors[randomInt(0,3)]));
+		randomInt(5, 15), randomInt(1,4), colors[randomInt(0,3)]));
 }
 
 function moveObjects() {
