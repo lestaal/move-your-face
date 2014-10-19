@@ -160,12 +160,12 @@ function incrementPoints(num) {
 		addBad();
 		maxVelocity+=2;
 	}
-	else if (numPoint < level4 && numPoints + num >= level4) {
+	else if (numPoints < level4 && numPoints + num >= level4) {
 		window.clearInterval(badInterval);
 		badInterval = window.setInterval(addBad, 4000);
 		maxVelocity++;
 	}
-	else if (numPoint < level5 && numPoints + num >= level5) {
+	else if (numPoints < level5 && numPoints + num >= level5) {
 		window.clearInterval(badInterval);
 		badInterval = window.setInterval(addBad, 3000);
 		maxVelocity++;
