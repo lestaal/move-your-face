@@ -4,11 +4,13 @@ var canvasOverlay;
 var overlayContext;
 var faceRectangle;
 var fallingObjects;
-var interval;
+var badInterval;
+var goodInterval;
 var numLives;
 var numPoints;
 var started;
-var colors = ["#FA6800", "#FAB700", "#FA3600", "#FA0000"];
+var badColors = ["#FA6800", "#FAB700", "#FA3600", "#FA0000"];
+var goodColors = ["#18FFFF", "#039BE5", "#1DE9B6", "#00E5FF"];
 var mustache;
 
 function init() {
@@ -74,8 +76,9 @@ function start() {
 	// initilaize falling objects
 	started = true;
 	fallingObjects = [];
-	addObject();
-	interval = window.setInterval(addObject, 5000);
+	addBad();
+	goodInterval = window.setInterval(addGood, 5000);
+	badInterval = window.setInterval(addGood, 15000);
 }
 
 /* Inclusive on min and max */
@@ -83,62 +86,55 @@ function randomInt(min, max) {
 	return Math.floor(Math.random() * (max - min + 1)) + min;
 }
 
-function addObject() {
-	console.log("Adding a circle");
+function addBad() {
 	fallingObjects.push(new Circle(randomInt(0,canvasOverlay.width), 0,
-		randomInt(5, 15), randomInt(1,4), colors[randomInt(0,3)]));
+		randomInt(5, 15), randomInt(1,4), badColors[randomInt(0,3)], false));
+}
+
+function addGood() {
+	fallingObjects.push(new Circle(randomInt(0,canvasOverlay.width), 0,
+		randomInt(5, 15), randomInt(1,4), goodColors[randomInt(0,3)], true));
 }
 
 function moveObjects() {
-	console.log("Moving circles");
-	var hit = false;
 	for(var i = 0; i < fallingObjects.length; i++) {
 		if(!fallingObjects[i].update()) {
 			fallingObjects.splice(i, 1);
 			i--;
-			hit = true;
 		}
 		else if(fallingObjects[i].y - fallingObjects[i].radius >
 			canvasOverlay.height) {
+			if (!fallingObjects[i].good) {
+				numPoints += 5*fallingObjects[i].radius;
+				document.getElementById("points").innerHTML = numPoints;
+			}
 			fallingObjects.splice(i, 1);
-			numPoints += 5*fallingObjects[i].radius;
-			document.getElementById("points").innerHTML = numPoints;
 			i--;
 		}
-	}
-	if(hit) {
-		onHit();
-	}
-}
-
-function onHit() {
-	console.log("hit");
-	numLives--;
-	document.getElementById("lives").innerHTML = numLives;
-	if(numLives <= 0) {
-		gameOver();
 	}
 }
 
 function gameOver() {
 	started = false;
 	fallingObjects = [];
-	window.clearInterval(interval);
+	window.clearInterval(badInterval);
+	window.clearInterval(goodInterval);
 	document.getElementById("lives").innerHTML = numLives;
 	document.getElementById("gameOver").style.display = 'block';
 }
 
-function Circle(x, y, radius, velocity, color) {
+function Circle(x, y, radius, velocity, color, good) {
 	this.x = x;
 	this.y = y;
 	this.radius = radius;
 	this.velocity = velocity;
 	this.color = color;
+	this.good = good;
 	
 	this.update = function() {
 		this.move();
 		this.draw();
-		return this.isValid();
+		this.isValid();
 	}
 
 	this.move = function() {
@@ -159,10 +155,20 @@ function Circle(x, y, radius, velocity, color) {
 			this.y >= (faceRectangle.y - faceRectangle.height/2 - this.radius) &&
 			this.y <= (faceRectangle.y + faceRectangle.height/2 + this.radius)) {
 				console.log("circle: "+this.x+", "+this.y+" rectangle: "+faceRectangle.x+", "+faceRectangle.y);
-				return false;
+				this.hit();
+		}
+	}
+
+	this.hit = function() {
+		if (this.good) {
+			numPoints += Math.ceil(0.75*this.radius);
+			document.getElementById("points").innerHTML = numPoints;
+		} else {
+			numLives--;
+			document.getElementById("lives").innerHTML = numLives;
+			if(numLives <= 0) {
+				gameOver();
 			}
-		else {
-			return true;
 		}
 	}
 }
