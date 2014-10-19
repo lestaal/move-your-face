@@ -41,8 +41,8 @@ function init() {
 			overlayContext.translate(-event.x, -event.y);
 			
 			mustache.style.display = "block";
-			mustache.style.left = (event.x - 50)+"px";
-			mustache.style.top = (event.y + 10)+"px";
+			mustache.style.left = (canvasOverlay.width - event.x - 50)+"px";
+			mustache.style.top = (event.y + 30)+"px";
 
 			faceRectangle = event;
 			if (started) {
