@@ -44,11 +44,11 @@ function init() {
 			if (numPoints >= 100) {
 				mustache.style.display = "block";
 				mustache.style.left = (canvasOverlay.width - event.x - 50)+"px";
-				mustache.style.top = (event.y + 30)+"px";
+				mustache.style.top = (event.y + 35)+"px";
 			}
 			monocle.style.display = "block";
 			monocle.style.left = (canvasOverlay.width - event.x - 90)+"px";
-			monocle.style.top = (event.y - 40)+"px";
+			monocle.style.top = (event.y - 35)+"px";
 
 			faceRectangle = event;
 			if (started) {
