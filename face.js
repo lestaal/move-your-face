@@ -17,6 +17,7 @@ function init() {
 	canvasOverlay = document.getElementById('overlay');
 	overlayContext = canvasOverlay.getContext('2d');
 	mustache = document.getElementById('mustache');
+	monocle = document.getElementById('monocle');
 
 	// line up overlay canvas with video
 	var bounds = videoInput.getBoundingClientRect();
@@ -45,6 +46,9 @@ function init() {
 				mustache.style.left = (canvasOverlay.width - event.x - 50)+"px";
 				mustache.style.top = (event.y + 30)+"px";
 			}
+			monocle.style.display = "block";
+			monocle.style.left = (canvasOverlay.width - event.x - 60)+"px";
+			monocle.style.top = (event.y - 50)+"px";
 
 			faceRectangle = event;
 			if (started) {
@@ -56,10 +60,12 @@ function init() {
 }
 
 function start() {
+	// reset game values
 	numLives = 3;
 	document.getElementById("lives").innerHTML = numLives;
 	numPoints = 0;
 	document.getElementById("points").innerHTML = numPoints;
+	mustache.style.display = "none";
 	// clear game over message
 	document.getElementById("gameOver").style.display = 'none';
 	// initilaize falling objects
