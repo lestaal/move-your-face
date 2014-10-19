@@ -16,6 +16,9 @@ var mustache;
 var level2 = 100;	//mustache
 var level3 = 200;	//monocle
 
+var minVelocity = 1;
+var maxVelocity = 4;
+
 function init() {
 	videoInput = document.getElementById('inputVideo');
 	canvasInput = document.getElementById('inputCanvas');
@@ -91,12 +94,14 @@ function randomInt(min, max) {
 
 function addBad() {
 	fallingObjects.push(new Circle(randomInt(0,canvasOverlay.width), 0,
-		randomInt(5, 15), randomInt(1,4), badColors[randomInt(0,3)], false));
+		randomInt(5, 15), randomInt(minVelocity,maxVelocity),
+		badColors[randomInt(0,3)], false));
 }
 
 function addGood() {
 	fallingObjects.push(new Circle(randomInt(0,canvasOverlay.width), 0,
-		randomInt(5, 15), randomInt(1,4), goodColors[randomInt(0,3)], true));
+		randomInt(5, 15), randomInt(minVelocity, maxVelocity),
+		goodColors[randomInt(0,3)], true));
 }
 
 function moveObjects() {
@@ -117,18 +122,20 @@ function moveObjects() {
 }
 
 function incrementPoints(num) {
-	numPoints += num;
-	document.getElementById("points").innerHTML = numPoints;
-	if (numPoints >= level3) {
+	if (numPoints < level3 && numPoints + num >= level3) {
 		window.clearInterval(badInterval);
 		badInterval = window.setInterval(addBad, 5000);
 		addBad();
+		maxVelocity++;
 	}
-	else if (numPoints >= level2) {
+	else if (numPoints < level2 && numPoints + num >= level2) {
 		window.clearInterval(badInterval);
 		badInterval = window.setInterval(addBad, 7000);
 		addBad();
+		maxVelocity++;
 	}
+	numPoints += num;
+	document.getElementById("points").innerHTML = numPoints;
 }
 
 function gameOver() {
