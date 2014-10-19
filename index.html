@@ -19,6 +19,12 @@
 			font-family : sans-serif;
 			z-index : 10;
 		}
+		#mustache {
+			position : absolute;
+			z-index : 9;
+			width : 100px;
+			height: auto;
+		}
 	</style>
 </head>
 <body onLoad="init();">
@@ -30,6 +36,7 @@
 	<canvas id="overlay" class="mirrored" width="740" height="555" style="position: absolute; z-index: 1; display: block;"></canvas>
 	<br/><button onClick="start();">Start!</button>
 
+	<div id="mustache" style="display: none;"><img src="mustache.png"></img></div>
 	<div id="gameOver" style="display: none;">Game Over</div>
 </body>
 </html>

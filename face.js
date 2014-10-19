@@ -9,12 +9,14 @@ var numLives;
 var numPoints;
 var started;
 var colors = ["#FA6800", "#FAB700", "#FA3600", "#FA0000"];
+var mustache;
 
 function init() {
 	videoInput = document.getElementById('inputVideo');
 	canvasInput = document.getElementById('inputCanvas');
 	canvasOverlay = document.getElementById('overlay');
 	overlayContext = canvasOverlay.getContext('2d');
+	mustache = document.getElementById('mustache');
 
 	// line up overlay canvas with video
 	var bounds = videoInput.getBoundingClientRect();
@@ -38,6 +40,10 @@ function init() {
 			overlayContext.rotate((Math.PI/2)-event.angle);
 			overlayContext.translate(-event.x, -event.y);
 			
+			mustache.style.display = "block";
+			mustache.style.left = (event.x - 50)+"px";
+			mustache.style.top = (event.y - 10)+"px";
+
 			faceRectangle = event;
 			if (started) {
 				moveObjects();
