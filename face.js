@@ -13,6 +13,9 @@ var badColors = ["#FA6800", "#FAB700", "#FA3600", "#FA0000"];
 var goodColors = ["#18FFFF", "#039BE5", "#1DE9B6", "#00E5FF"];
 var mustache;
 
+var level2 = 100;	//mustache
+var level3 = 200;	//monocle
+
 function init() {
 	videoInput = document.getElementById('inputVideo');
 	canvasInput = document.getElementById('inputCanvas');
@@ -43,12 +46,12 @@ function init() {
 			overlayContext.rotate((Math.PI/2)-event.angle);
 			overlayContext.translate(-event.x, -event.y);
 			
-			if (numPoints >= 100) {
+			if (numPoints >= level2) {
 				mustache.style.display = "block";
 				mustache.style.left = (canvasOverlay.width - event.x - 50)+"px";
 				mustache.style.top = (event.y + 35)+"px";
 			}
-			if (numPoints >= 150) {
+			if (numPoints >= level3) {
 				monocle.style.display = "block";
 				monocle.style.left = (canvasOverlay.width - event.x - 90)+"px";
 				monocle.style.top = (event.y - 35)+"px";
@@ -105,12 +108,24 @@ function moveObjects() {
 		else if(fallingObjects[i].y - fallingObjects[i].radius >
 			canvasOverlay.height) {
 			if (!fallingObjects[i].good) {
-				numPoints += 5*fallingObjects[i].radius;
-				document.getElementById("points").innerHTML = numPoints;
+				incrementPoints(5*fallingObjects[i].radius);
 			}
 			fallingObjects.splice(i, 1);
 			i--;
 		}
+	}
+}
+
+function incrementPoints(num) {
+	numPoints += num;
+	document.getElementById("points").innerHTML = numPoints;
+	if (numPoints >= level3) {
+		window.clearInterval(badInterval);
+		badInterval = window.setInterval(addBad, 5000);
+	}
+	else if (numPoints >= level2) {
+		window.clearInterval(badInterval);
+		badInterval = window.setInterval(addBad, 7000);
 	}
 }
 
@@ -164,8 +179,7 @@ function Circle(x, y, radius, velocity, color, good) {
 
 	this.hit = function() {
 		if (this.good) {
-			numPoints += Math.ceil(0.75*this.radius);
-			document.getElementById("points").innerHTML = numPoints;
+			incrementPoints(Math.ceil(0.75*this.radius));
 		} else {
 			numLives--;
 			document.getElementById("lives").innerHTML = numLives;
