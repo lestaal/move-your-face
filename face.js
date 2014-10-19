@@ -16,8 +16,8 @@ var mustache;
 var level2 = 100;	//mustache
 var level3 = 200;	//monocle
 
-var minVelocity = 1;
-var maxVelocity = 4;
+var minVelocity;
+var maxVelocity;
 
 function init() {
 	videoInput = document.getElementById('inputVideo');
@@ -77,6 +77,8 @@ function start() {
 	document.getElementById("points").innerHTML = numPoints;
 	mustache.style.display = "none";
 	monocle.style.display = "none";
+	minVelocity = 1;
+	maxVelocity = 4;
 	// clear game over message
 	document.getElementById("gameOver").style.display = 'none';
 	// initilaize falling objects
@@ -126,13 +128,13 @@ function incrementPoints(num) {
 		window.clearInterval(badInterval);
 		badInterval = window.setInterval(addBad, 5000);
 		addBad();
-		maxVelocity++;
+		maxVelocity+=2;
 	}
 	else if (numPoints < level2 && numPoints + num >= level2) {
 		window.clearInterval(badInterval);
 		badInterval = window.setInterval(addBad, 7000);
 		addBad();
-		maxVelocity++;
+		maxVelocity+=2;
 	}
 	numPoints += num;
 	document.getElementById("points").innerHTML = numPoints;
