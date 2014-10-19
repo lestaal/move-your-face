@@ -122,10 +122,12 @@ function incrementPoints(num) {
 	if (numPoints >= level3) {
 		window.clearInterval(badInterval);
 		badInterval = window.setInterval(addBad, 5000);
+		addBad();
 	}
 	else if (numPoints >= level2) {
 		window.clearInterval(badInterval);
 		badInterval = window.setInterval(addBad, 7000);
+		addBad();
 	}
 }
 
