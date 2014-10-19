@@ -78,10 +78,11 @@ function init() {
 				bowtie.style.left = (canvasOverlay.width - event.x - 50) + "px";
 				bowtie.style.top = (event.y + 150) + "px";
 			}
-			//if (numPoints >= level5) {
-			tophat.style.display = "block";
-			tophat.style.left = (canvasOverlay.width - event.x - 50) + "px";
-			tophat.style.top = (event.y - 100) + "px";
+			if (numPoints >= level5) {
+				tophat.style.display = "block";
+				tophat.style.left = (canvasOverlay.width - event.x - 50) + "px";
+				tophat.style.top = (event.y - 220) + "px";
+			}
 
 			faceRectangle = event;
 			if (started) {
