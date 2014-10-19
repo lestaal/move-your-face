@@ -6,6 +6,7 @@ var faceRectangle;
 var fallingObjects;
 var interval;
 var numLives;
+var started;
 var colors = ["#FA6800", "#FAB700", "#FA3600", "#FA0000"];
 
 function init() {
@@ -34,7 +35,9 @@ function init() {
 			overlayContext.translate(-event.x, -event.y);
 			
 			faceRectangle = event;
-			moveObjects();
+			if (started) {
+				moveObjects();
+			}
 		}
 	});
 
@@ -44,6 +47,7 @@ function start() {
 	// clear game over message
 	document.getElementById("gameOver").style.display = 'none';
 	// initilaize falling objects
+	started = true;
 	fallingObjects = [];
 	addObject();
 	interval = window.setInterval(addObject, 5000);
@@ -90,6 +94,7 @@ function onHit() {
 }
 
 function gameOver() {
+	started = false;
 	fallingObjects = [];
 	window.clearInterval(interval);
 	numLives = 3;
