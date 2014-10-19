@@ -42,7 +42,7 @@ function init() {
 			
 			mustache.style.display = "block";
 			mustache.style.left = (event.x - 50)+"px";
-			mustache.style.top = (event.y - 10)+"px";
+			mustache.style.top = (event.y + 10)+"px";
 
 			faceRectangle = event;
 			if (started) {
