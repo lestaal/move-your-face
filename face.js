@@ -60,7 +60,7 @@ function moveObjects() {
 	console.log("Moving circles");
 	var hit = false;
 	for(var i = 0; i < fallingObjects.length; i++) {
-		if(fallingObjects[i].update()) {
+		if(!fallingObjects[i].update()) {
 			fallingObjects.splice(i, 1);
 			i--;
 			hit = true;
