@@ -40,9 +40,11 @@ function init() {
 			overlayContext.rotate((Math.PI/2)-event.angle);
 			overlayContext.translate(-event.x, -event.y);
 			
-			mustache.style.display = "block";
-			mustache.style.left = (canvasOverlay.width - event.x - 50)+"px";
-			mustache.style.top = (event.y + 30)+"px";
+			if (numPoints >= 100) {
+				mustache.style.display = "block";
+				mustache.style.left = (canvasOverlay.width - event.x - 50)+"px";
+				mustache.style.top = (event.y + 30)+"px";
+			}
 
 			faceRectangle = event;
 			if (started) {
