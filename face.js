@@ -34,6 +34,7 @@ function init() {
 			overlayContext.translate(-event.x, -event.y);
 			
 			faceRectangle = event;
+			moveObjects();
 		}
 	});
 
@@ -41,8 +42,9 @@ function init() {
 
 function start() {
 	fallingObjects = [];
-	window.setInterval(moveObjects, 500);
-	window.setInterval(addObject, 3000);
+	addObject();
+	//window.setInterval(moveObjects, 500);
+	window.setInterval(addObject, 5000);
 }
 
 /* Inclusive on min and max */
