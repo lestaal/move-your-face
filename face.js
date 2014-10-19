@@ -6,6 +6,7 @@ var faceRectangle;
 var fallingObjects;
 var interval;
 var numLives;
+var numPoints;
 var started;
 var colors = ["#FA6800", "#FAB700", "#FA3600", "#FA0000"];
 
@@ -14,7 +15,6 @@ function init() {
 	canvasInput = document.getElementById('inputCanvas');
 	canvasOverlay = document.getElementById('overlay');
 	overlayContext = canvasOverlay.getContext('2d');
-	numLives = 3;
 
 	// line up overlay canvas with video
 	var bounds = videoInput.getBoundingClientRect();
@@ -48,6 +48,8 @@ function init() {
 }
 
 function start() {
+	numLives = 3;
+	numPoints = 0;
 	// clear game over message
 	document.getElementById("gameOver").style.display = 'none';
 	// initilaize falling objects
@@ -80,6 +82,8 @@ function moveObjects() {
 		else if(fallingObjects[i].y - fallingObjects[i].radius >
 			canvasOverlay.height) {
 			fallingObjects.splice(i, 1);
+			numPoints += 5*fallingObjects[i].radius;
+			document.getElementById("points").innerHTML = numPoints;
 			i--;
 		}
 	}
@@ -101,7 +105,6 @@ function gameOver() {
 	started = false;
 	fallingObjects = [];
 	window.clearInterval(interval);
-	numLives = 3;
 	document.getElementById("lives").innerHTML = numLives;
 	document.getElementById("gameOver").style.display = 'block';
 }
