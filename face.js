@@ -76,9 +76,9 @@ function start() {
 	// initilaize falling objects
 	started = true;
 	fallingObjects = [];
-	addBad();
+	addGood();
 	goodInterval = window.setInterval(addGood, 5000);
-	badInterval = window.setInterval(addGood, 15000);
+	badInterval = window.setInterval(addBad, 15000);
 }
 
 /* Inclusive on min and max */
@@ -134,7 +134,7 @@ function Circle(x, y, radius, velocity, color, good) {
 	this.update = function() {
 		this.move();
 		this.draw();
-		this.isValid();
+		return this.isValid();
 	}
 
 	this.move = function() {
@@ -156,6 +156,9 @@ function Circle(x, y, radius, velocity, color, good) {
 			this.y <= (faceRectangle.y + faceRectangle.height/2 + this.radius)) {
 				console.log("circle: "+this.x+", "+this.y+" rectangle: "+faceRectangle.x+", "+faceRectangle.y);
 				this.hit();
+				return false;
+		} else {
+			return true;
 		}
 	}
 
