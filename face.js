@@ -49,7 +49,9 @@ function init() {
 
 function start() {
 	numLives = 3;
+	document.getElementById("lives").innerHTML = numLives;
 	numPoints = 0;
+	document.getElementById("points").innerHTML = numPoints;
 	// clear game over message
 	document.getElementById("gameOver").style.display = 'none';
 	// initilaize falling objects
