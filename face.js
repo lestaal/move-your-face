@@ -26,6 +26,11 @@ function init() {
 	overlayContext = canvasOverlay.getContext('2d');
 	mustache = document.getElementById('mustache');
 	monocle = document.getElementById('monocle');
+	
+	if(localStorage.getItem("highScore") == undefined) {
+		localStorage.setItem("highScore", 0);
+	}
+	document.getElementById("highScore").innerHTML = localStorage.getItem("highScore");
 
 	// line up overlay canvas with video
 	var bounds = videoInput.getBoundingClientRect();
@@ -147,6 +152,10 @@ function gameOver() {
 	window.clearInterval(goodInterval);
 	document.getElementById("lives").innerHTML = numLives;
 	document.getElementById("gameOver").style.display = 'block';
+	if (localStorage.getItem("highScore") < numPoints) {
+		localStorage.setItem("highScore", numPoints);
+		document.getElementById("highScore").innerHTML = numPoints;
+	}
 }
 
 function Circle(x, y, radius, velocity, color, good) {
