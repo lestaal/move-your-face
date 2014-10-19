@@ -43,6 +43,7 @@ function init() {
 
 	// for each facetracking event received draw rectangle around tracked face on canvas
 	document.addEventListener("facetrackingEvent", function( event ) {
+		document.getElementById("start").disabled = false;
 		// clear canvas
 		overlayContext.clearRect(0,0,canvasOverlay.width,canvasOverlay.height);
 		// once we have stable tracking, draw rectangle
