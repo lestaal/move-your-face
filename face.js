@@ -18,9 +18,9 @@ var bowtie;
 var tophat;
 
 var level2 = 100;	//mustache
-var level3 = 200;	//monocle
-var level4 = 300;	//bow tie
-var level5 = 400;	//top hat
+var level3 = 250;	//monocle
+var level4 = 450;	//bow tie
+var level5 = 700;	//top hat
 
 var minVelocity;
 var maxVelocity;
@@ -101,6 +101,8 @@ function start() {
 	document.getElementById("points").innerHTML = numPoints;
 	mustache.style.display = "none";
 	monocle.style.display = "none";
+	bowtie.style.display = "none";
+	tophat.style.display = "none";
 	minVelocity = 1;
 	maxVelocity = 4;
 	// clear game over message
