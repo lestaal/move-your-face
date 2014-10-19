@@ -4,7 +4,7 @@ var canvasOverlay;
 var overlayContext;
 var faceRectangle;
 var fallingObjects;
-
+var interval;
 var numLives;
 var colors = ["#FA6800", "#FAB700", "#FA3600", "#FA0000"];
 
@@ -41,10 +41,13 @@ function init() {
 }
 
 function start() {
+	// clear canvas
+	overlayContext.clearRect(0,0,740,580);
+	// initilaize falling objects
 	fallingObjects = [];
 	addObject();
 	//window.setInterval(moveObjects, 500);
-	window.setInterval(addObject, 5000);
+	interval = window.setInterval(addObject, 5000);
 }
 
 /* Inclusive on min and max */
@@ -83,9 +86,16 @@ function onHit() {
 	numLives--;
 	document.getElementById("lives").innerHTML = numLives;
 	if(numLives <= 0) {
-		fallingObjects = [];
-		//TODO: game over message
+		gameOver();
 	}
+}
+
+function gameOver() {
+	fallingObjects = [];
+	window.clearInterval(interval);
+	overlayContext.font="30px Gerogia";
+	overlayContext.fillStyle = "#FA0000"
+	overlayContext.fillText("Game Over", canvasOverlay.width/2 - 100, canvasOverlay.height/2 - 10);
 }
 
 function Circle(x, y, radius, velocity, color) {
