@@ -16,6 +16,10 @@ function init() {
 	overlayContext = canvasOverlay.getContext('2d');
 	numLives = 3;
 
+	// line up overlay canvas with video
+	var bounds = videoInput.getBoundingClientRect();
+	canvasOverlay.style.top = bounds.top;
+
 	// initialize the headtracker
 	var htracker = new headtrackr.Tracker({ui : false});
 	htracker.init(videoInput, canvasInput);
