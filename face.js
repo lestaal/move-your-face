@@ -15,6 +15,7 @@ var goodColors = ["#18FFFF", "#039BE5", "#1DE9B6", "#00E5FF"];
 var mustache;
 var monocle;
 var bowtie;
+var tophat;
 
 var level2 = 100;	//mustache
 var level3 = 200;	//monocle
@@ -32,6 +33,7 @@ function init() {
 	mustache = document.getElementById('mustache');
 	monocle = document.getElementById('monocle');
 	bowtie = document.getElementById('bowtie');
+	tophat = document.getElementById('tophat');
 	
 	if(localStorage.getItem("highScore") == undefined) {
 		localStorage.setItem("highScore", 0);
@@ -71,11 +73,15 @@ function init() {
 				monocle.style.left = (canvasOverlay.width - event.x - 90)+"px";
 				monocle.style.top = (event.y - 35)+"px";
 			}
-			//if (numPoints >= level4) {
-			bowtie.style.display = "block";
-			bowtie.style.left = (canvasOverlay.width - event.x - 50) + "px";
-			bowtie.style.top = (event.y + 100) + "px";
-			//}
+			if (numPoints >= level4) {
+				bowtie.style.display = "block";
+				bowtie.style.left = (canvasOverlay.width - event.x - 50) + "px";
+				bowtie.style.top = (event.y + 150) + "px";
+			}
+			//if (numPoints >= level5) {
+			tophat.style.display = "block";
+			tophat.style.left = (canvasOverlay.width - event.x - 50) + "px";
+			tophat.style.top = (event.y - 100) + "px";
 
 			faceRectangle = event;
 			if (started) {
