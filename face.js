@@ -77,8 +77,8 @@ function start() {
 	started = true;
 	fallingObjects = [];
 	addGood();
-	goodInterval = window.setInterval(addGood, 5000);
-	badInterval = window.setInterval(addBad, 15000);
+	goodInterval = window.setInterval(addGood, 2000);
+	badInterval = window.setInterval(addBad, 10000);
 }
 
 /* Inclusive on min and max */
