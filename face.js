@@ -101,6 +101,8 @@ function start() {
 	document.getElementById("points").innerHTML = numPoints;
 	mustache.style.display = "none";
 	monocle.style.display = "none";
+	bowtie.style.display = "none";
+	tophat.style.display = "none";
 	minVelocity = 1;
 	maxVelocity = 4;
 	// clear game over message
